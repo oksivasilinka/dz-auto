@@ -23,7 +23,7 @@ type SuperEditableSpanType = Omit<DefaultInputPropsType, 'type'> & {
     onEnter?: () => void
     error?: string
 
-    spanProps?: DefaultSpanPropsType  & {defaultText?: string}// пропсы для спана
+    spanProps?: DefaultSpanPropsType & { defaultText?: string }// пропсы для спана
 }
 
 const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
@@ -44,11 +44,13 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         // выключить editMode при нажатии Enter // делают студенты
 
         onEnter?.()
+        setEditMode(!editMode)
     }
     const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
         // выключить editMode при нажатии за пределами инпута // делают студенты
 
         onBlur?.(e)
+        setEditMode(!editMode)
     }
     const onDoubleClickCallBack = (
         e: React.MouseEvent<HTMLSpanElement, MouseEvent>
@@ -56,6 +58,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         // включить editMode при двойном клике // делают студенты
 
         onDoubleClick?.(e)
+        setEditMode(true)
     }
 
     const spanClassName = s.span
