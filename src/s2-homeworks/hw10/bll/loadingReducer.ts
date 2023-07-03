@@ -1,13 +1,17 @@
+import {AppStoreType} from "./store";
+
 const initState = {
     isLoading: false,
 }
 
-export const loadingReducer = (state = initState, action: any): any => { // fix any
+export const loadingReducer = (state = initState, action: LoadingActionType): boolean => { // fix any
     switch (action.type) {
         // пишет студент  // need to fix
+        case 'CHANGE_LOADING':
+            return action.isLoading = true
 
         default:
-            return state
+            return state.isLoading
     }
 }
 
